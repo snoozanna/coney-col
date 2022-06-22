@@ -1,0 +1,114 @@
+:: StoryTitle
+autoplay test
+
+
+:: StoryData
+{
+	"ifid": "E894C240-9CF9-4814-8F66-D4D3D303EB65",
+	"format": "SugarCube",
+	"format-version": "2.36.1",
+	"start": "facilitation01",
+	"zoom": 0.6
+}
+
+
+:: Story Stylesheet [stylesheet]
+
+@import url("./styles/styles.css");
+@import url("./styles/generics.css");
+
+body{
+  padding: 0
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 20px;
+  font-size: 2vh;
+  /* background-color: #fff; */
+}
+
+.nav-container {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: space-between;
+      flex-grow: 1;
+}
+
+button {
+  background: grey;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  color: #ffffff;
+  padding: 5px
+  text-decoration: none;
+}
+
+.audio-controls > .audio-item:first-child{
+  margin-block-end: 15px;
+}
+
+
+:: Story JavaScript [script]
+$('#ui-bar').remove();
+$(document.head).find('#style-ui-bar').remove();
+
+/*! typed.js integration module for SugarCube */
+!function(){"use strict";function getInlineOptions(classNames){var match,options={},typedRe=/^typed(?:-(\w+))+\b$/,parseRe=/-(speed|delay)(\d+)\b/g;if("typed"!==classNames){classNames=classNames.toLowerCase().split(/\s+/);for(var i=0;i<classNames.length;i++)if(typedRe.test(classNames[i])){for(;null!==(match=parseRe.exec(classNames[i]));)switch(match[1]){case"speed":options.typeSpeed=+match[2];break;case"delay":options.startDelay=+match[2]}break}}return options}function typedCallbackFactory(el,callback){return function(){var $outer=jQuery(el),$inner=jQuery('<div class="typedjs-text-wrapper" style="display:block;position:absolute;left:0;top:0;"><span class="typed"></span></div>'),$source=$outer.children('[class|="typed"]'),options=jQuery.extend({typeSpeed:40,startDelay:400},getInlineOptions($source.attr("class")),{strings:[$source.html()]});"function"==typeof callback&&(options.callback=callback),$outer.append($inner),$inner.children().typed(options)}}postrender.typedSetupHandler=function(content){jQuery('[class|="typed"]',content).addClass("typed").css("visibility","hidden").wrap('<div class="typedjs-outer-wrapper" style="display:block;position:relative;"></div>')},postdisplay.typedAnimationHandler=function(){for(var $elements=jQuery("#passages .typedjs-outer-wrapper"),callback=null,i=$elements.length-1;i>=0;--i)callback=typedCallbackFactory($elements[i],callback);"function"==typeof callback&&callback()}}();
+/*! Typed.js | (c) 2014 Matt Boldt | MIT License */
+!function(t){"use strict";var s=function(s,e){this.el=t(s),this.options=t.extend({},t.fn.typed.defaults,e),this.isInput=this.el.is("input"),this.attr=this.options.attr,this.showCursor=this.isInput?!1:this.options.showCursor,this.elContent=this.attr?this.el.attr(this.attr):this.el.text(),this.contentType=this.options.contentType,this.typeSpeed=this.options.typeSpeed,this.startDelay=this.options.startDelay,this.backSpeed=this.options.backSpeed,this.backDelay=this.options.backDelay,this.stringsElement=this.options.stringsElement,this.strings=this.options.strings,this.strPos=0,this.arrayPos=0,this.stopNum=0,this.loop=this.options.loop,this.loopCount=this.options.loopCount,this.curLoop=0,this.stop=!1,this.cursorChar=this.options.cursorChar,this.shuffle=this.options.shuffle,this.sequence=[],this.build()};s.prototype={constructor:s,init:function(){var t=this;t.timeout=setTimeout(function(){for(var s=0;s<t.strings.length;++s)t.sequence[s]=s;t.shuffle&&(t.sequence=t.shuffleArray(t.sequence)),t.typewrite(t.strings[t.sequence[t.arrayPos]],t.strPos)},t.startDelay)},build:function(){var s=this;if(this.showCursor===!0&&(this.cursor=t('<span class="typed-cursor">'+this.cursorChar+"</span>"),this.el.after(this.cursor)),this.stringsElement){s.strings=[],this.stringsElement.hide();var e=this.stringsElement.find("p");t.each(e,function(e,i){s.strings.push(t(i).html())})}this.init()},typewrite:function(t,s){if(this.stop!==!0){var e=Math.round(70*Math.random())+this.typeSpeed,i=this;i.timeout=setTimeout(function(){var e=0,r=t.substr(s);if("^"===r.charAt(0)){var o=1;/^\^\d+/.test(r)&&(r=/\d+/.exec(r)[0],o+=r.length,e=parseInt(r)),t=t.substring(0,s)+t.substring(s+o)}if("html"===i.contentType){var n=t.substr(s).charAt(0);if("<"===n||"&"===n){var a="",h="";for(h="<"===n?">":";";t.substr(s).charAt(0)!==h;)a+=t.substr(s).charAt(0),s++;s++,a+=h}}i.timeout=setTimeout(function(){if(s===t.length){if(i.options.onStringTyped(i.arrayPos),i.arrayPos===i.strings.length-1&&(i.options.callback(),i.curLoop++,i.loop===!1||i.curLoop===i.loopCount))return;i.timeout=setTimeout(function(){i.backspace(t,s)},i.backDelay)}else{0===s&&i.options.preStringTyped(i.arrayPos);var e=t.substr(0,s+1);i.attr?i.el.attr(i.attr,e):i.isInput?i.el.val(e):"html"===i.contentType?i.el.html(e):i.el.text(e),s++,i.typewrite(t,s)}},e)},e)}},backspace:function(t,s){if(this.stop!==!0){var e=Math.round(70*Math.random())+this.backSpeed,i=this;i.timeout=setTimeout(function(){if("html"===i.contentType&&">"===t.substr(s).charAt(0)){for(var e="";"<"!==t.substr(s).charAt(0);)e-=t.substr(s).charAt(0),s--;s--,e+="<"}var r=t.substr(0,s);i.attr?i.el.attr(i.attr,r):i.isInput?i.el.val(r):"html"===i.contentType?i.el.html(r):i.el.text(r),s>i.stopNum?(s--,i.backspace(t,s)):s<=i.stopNum&&(i.arrayPos++,i.arrayPos===i.strings.length?(i.arrayPos=0,i.shuffle&&(i.sequence=i.shuffleArray(i.sequence)),i.init()):i.typewrite(i.strings[i.sequence[i.arrayPos]],s))},e)}},shuffleArray:function(t){var s,e,i=t.length;if(i)for(;--i;)e=Math.floor(Math.random()*(i+1)),s=t[e],t[e]=t[i],t[i]=s;return t},reset:function(){var t=this;clearInterval(t.timeout);var s=this.el.attr("id");this.el.after('<span id="'+s+'"/>'),this.el.remove(),"undefined"!=typeof this.cursor&&this.cursor.remove(),t.options.resetCallback()}},t.fn.typed=function(e){return this.each(function(){var i=t(this),r=i.data("typed"),o="object"==typeof e&&e;r||i.data("typed",r=new s(this,o)),"string"==typeof e&&r[e]()})},t.fn.typed.defaults={strings:["These are the default values...","You know what you should do?","Use your own!","Have a great day!"],stringsElement:null,typeSpeed:0,startDelay:0,backSpeed:0,shuffle:!1,backDelay:500,loop:!1,loopCount:!1,showCursor:!0,cursorChar:"|",attr:null,contentType:"html",callback:function(){},preStringTyped:function(){},onStringTyped:function(){},resetCallback:function(){}}}(window.jQuery);
+
+
+:: StoryInit {"position":"10,241","size":"100,100"}
+<<set $captions to true>><<set $audio to true>>
+
+
+:: header [header] {"position":"16,93","size":"100,100"}
+/* {
+(print: "<script>$('html').removeClass(\)</script>")
+(if: (passage:)'s tags's length > 0)[
+(print: "<script>$('html').addClass('" + (passage:)'s tags.join(' ') + "'\)</script>")]
+(print: "<script>$('tw-story').removeClass(\)</script>")
+(if: (passage:)'s tags's length > 0)[
+(print: "<script>$('tw-story').addClass('" + (passage:)'s tags.join(' ') + "'\)</script>")]
+} */
+    <div class="info-container">
+      <h1>autoplay</h1>
+      <p>Twine SugarCube 2.36.1, compiled using Tweego </p>
+    </div>
+
+
+
+
+:: facilitation01 {"position":"346,665","size":"100,100"}
+<<set $passage to "facilitation01">> 
+<header id="header"><<include "header">></header>
+<span id="text"></span>
+
+<footer id="footer"><<include "footer">> </footer>
+
+<<if $audio is true>><<include "facilitation01 audio">><</if>><<if $captions is true>><<include "facilitation01 captions">><</if>><<if $captions is false>><<include voicetext>><</if>>
+
+:: facilitation01 audio {"position":"651,668","size":"100,100"}
+<audio id="player" src="https://youhavefoundconey.net/afterlife/facilitation/mp3s/facilitation01.mp3" autoplay></audio>
+
+:: facilitation01 captions {"position":"503,668","size":"100,100"}
+<<timed 0s>><<replace #text>><<timed 0s>><<type 40ms>>Hello, thanks for being here. <</type>><</timed>><<timed 4s>><<type 40ms>>Seriously, thank you. <</type>><</timed>><<timed 8s>><<type 40ms>>I'm here to guide you through making a choice. <</type>><</timed>><</replace>><</timed>>
+<<timed 11s>><<replace #text>><<timed 0s>><<type 40ms>>You're asked to choose one memory from your life, just one, which our service will then recreate for you as your own personal afterlife. <</type>><</timed>><<timed 10s>><<type 40ms>>For you to spend eternity inside. <</type>><</timed>><<timed 14s>><<type 40ms>>Any memory, any moment from your life to date. <</type>><</timed>><<timed 18s>><<type 40ms>>The choice is yours and yours alone. <</type>><</timed>><</replace>><</timed>>
+<<timed 31s>><<replace #text>><<timed 0s>><<type 40ms>>But it's a big choice to make. <</type>><</timed>><<timed 3s>><<type 40ms>>Our service is here to facilitate you making the best decision for yourself. <</type>><</timed>><<timed 8s>><<type 40ms>>Whatever is best for you. <</type>><</timed>><</replace>><</timed>>
+<<timed 42s>><<replace #text>><<timed 0s>><<type 40ms>>Right now, it's best if you are somewhere you can be alone with your memories. <</type>><</timed>><<timed 6s>><<type 40ms>>You might find photos or other mementoes to hand that can help you. <</type>><</timed>><<timed 13s>><<type 40ms>>Feel free to pour yourself a drink. <</type>><</timed>><<timed 15s>><<type 40ms>>I like Oasis Summer Fruits but you do your thing.<</type>><</timed>><<timed 20s>><<type 40ms>>And finally, you'll need a pen and paper. <</type>><</timed>><</replace>><</timed>>
+<<timed 66s>><<replace #text>><<timed 0s>><<type 40ms>>  <</type>><</timed>><<timed 4s>><<type 40ms>>If you need a little time to get yourself and everything ready, and your drink, no problem. <</type>><</timed>><<timed 12s>><<type 40ms>>When you're ready, press to continue.<</type>><</timed>><</replace>><</timed>>
+
+
+:: voicetext {"position":"9,404","size":"100,100"}
+<<timed 0.5s>><<replace #text>><<type 40ms>>[audio playing]<</type>><</replace>><<timed 2s>><<replace #text>>  <</replace>><</timed>><</timed>>
+<<timed 4.5s>><<replace #text>><<type 40ms>>[audio playing]<</type>><</replace>><<timed 2s>><<replace #text>>  <</replace>><</timed>><</timed>>
+<<timed 8.5s>><<replace #text>><<type 40ms>>[audio playing]<</type>><</replace>><<timed 2s>><<replace #text>>  <</replace>><</timed>><</timed>>
+
+:: footer {"position":"327,237","size":"100,100"}
+
+<div class="nav-container"><div class="nav-item"><a href="../index.html"><<button "HOME">><</button>></a></div><div class="nav-item"><<button REPLAY>><<goto $passage>><</button>> </div><div class="nav-item"><<button "BACK">><<goto $prevpass>><</button>></div><div class="audio-controls"><div class="audio-item"><<if $captions is true>><<button 'CAPTIONS OFF'>><<set $captions to false>><<set $audio to true>><<goto $passage>><</button>><</if>><<if $captions is false>><<button 'CAPTIONS ON'>><<set $captions to true>><<goto $passage>><</button>><</if>></div><div class="audio-item"> <<if $audio is true>><<button 'AUDIO OFF'>><<set $audio to false>><<set $captions to true>><<goto $passage>><</button>><</if>><<if $audio is false>><<button 'AUDIO ON'>><<set $audio to true>><<goto $passage>><</button>><</if>></div></div>

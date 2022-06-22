@@ -6,7 +6,7 @@ body {
   padding: 20px;
   font-family: "Roboto", sans-serif;
   background-color: beige;
-
+  color: black;
   justify-content: space-between;
 }
 
@@ -15,4 +15,21 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+}
+
+.info-container > p {
+  max-width: 40%;
+  text-align: right;
+  font-size: smaller;
 }
