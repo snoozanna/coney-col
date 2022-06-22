@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- thirdparty styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- our styles -->
+  <link rel="stylesheet" href="/styles/generics.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/map.css">
+
+  <!-- our scripts -->
+  <script src="/scripts/map.js" type="module"></script>
+  <title>map</title>
+</head>
+
+<body>
+  <header>
+    <h1>map</h1>
+    <nav>
+      <ul>
+        <li><a href="./map.html">map</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <!-- a random map -->
+    <!-- <iframe style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyALqUsSyaTycZPpxIkDGMWukm2P7cmLsQs
+    &q=St Mary Le Bow Church,Cheapside,&maptype=satellite">
+    </iframe> --->
+
+    <!-- wills map -->
+    <!-- <iframe src="https://www.google.com/maps/d/embed?mid=1uDTupDbexb25b7sKfx7vTbMh1EV4toQ&hl=en&ehbc=2E312F" width="640"
+      height="480"></iframe> -->
+    <div id="map"></div>
+    <button id="find-me">Show my location</button><br />
+    <p id="status"></p>
+    <a id="map-link" target="_blank">Link</a>
+  </main>
+
+  <footer></footer>
+</body>
+
+</html>
