@@ -10,7 +10,7 @@ function initMap() {
     center: { lat: 51.513743, lng: -0.0958325 },
     zoom: 6,
   });
-
+  console.log("map", map);
   infoWindow = new google.maps.InfoWindow();
 
   const locationButton = document.createElement("button");
@@ -58,6 +58,10 @@ window.initMap = initMap;
 
 // To show current location as latitude and long
 
+const cityMap = document.getElementById("map");
+cityMap.innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=1uDTupDbexb25b7sKfx7vTbMh1EV4toQ&hl=en&ehbc=2E312F" width="640"
+      height="480"></iframe`;
+
 function geoFindMe() {
   const status = document.querySelector("#status");
   const mapLink = document.querySelector("#map-link");
@@ -87,5 +91,3 @@ function geoFindMe() {
 }
 
 document.querySelector("#find-me").addEventListener("click", geoFindMe);
-
-can;
