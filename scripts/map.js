@@ -8,14 +8,106 @@ let map, infoWindow;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 51.513743, lng: -0.0958325 },
-    zoom: 6,
+    zoom: 16,
   });
-  console.log("map", map);
+
+  const icons = {
+    fair: {
+      icon: {
+        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+        fillColor: "hotpink",
+        fillOpacity: 0.6,
+        strokeWeight: 0,
+        rotation: 0,
+        scale: 10,
+      },
+    },
+    adventure: {
+      icon: {
+        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+        fillColor: "blue",
+        fillOpacity: 0.6,
+        strokeWeight: 0,
+        rotation: 0,
+        scale: 10,
+      },
+    },
+    hunt: {
+      icon: {
+        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+        fillColor: "green",
+        fillOpacity: 0.6,
+        strokeWeight: 0,
+        rotation: 0,
+        scale: 10,
+      },
+    },
+  };
+
+  const locations = [
+    {
+      position: new google.maps.LatLng(
+        51.517688631783976,
+        -0.10081760748074763,
+      ),
+      type: "fair",
+      content:
+        '<div id="content">' +
+        "<h3>Fair 1</h3>" +
+        "<p>Infomation about this fair</p>" +
+        "</div>",
+    },
+    {
+      position: new google.maps.LatLng(51.51596415654087, -0.10630967216174751),
+      type: "adventure",
+      content:
+        '<div id="content">' +
+        "<h3>Adventure 1</h3>" +
+        "<p>Infomation about this adventure</p>" +
+        "</div>",
+    },
+    {
+      position: new google.maps.LatLng(51.51647019724397, -0.09342378488567582),
+      type: "hunt",
+      content:
+        '<div id="content">' +
+        "<h3>HUNT</h3>" +
+        "<p>Infomation about the hunt</p>" +
+        "</div>",
+    },
+  ];
+
+  locations.map((location) => {
+    const marker = new google.maps.Marker({
+      position: location.position,
+      icon: icons[location.type].icon,
+      map: map,
+    });
+    const placewindow = new google.maps.InfoWindow({
+      content: location.content,
+    });
+    marker.addListener("click", () => {
+      placewindow.open({
+        anchor: marker,
+        map,
+        shouldFocus: false,
+      });
+    });
+  });
+
+  const contentString =
+    '<div id="content">' + '<div id="siteNotice">' + "<h3>Fair</h3>";
+  "<p>Infomation about this fair</p>" + "</div>" + "</div>";
+
+  // const placeMarker = new google.maps.Marker({
+  //   position: map.getCenter(),
+  //   icon: svgMarker,
+  //   map: map,
+  // });
+
   infoWindow = new google.maps.InfoWindow();
-
   const locationButton = document.createElement("button");
-
-  locationButton.textContent = "Pan to Current Location";
+  locationButton.textContent = "Show my Current Location";
   locationButton.classList.add("custom-map-control-button");
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
   locationButton.addEventListener("click", () => {
@@ -27,7 +119,6 @@ function initMap() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-
           infoWindow.setPosition(pos);
           infoWindow.setContent("Location found.");
           infoWindow.open(map);
@@ -58,24 +149,33 @@ window.initMap = initMap;
 
 // To show current location as latitude and long
 
-const cityMap = document.getElementById("map");
-cityMap.innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=1uDTupDbexb25b7sKfx7vTbMh1EV4toQ&hl=en&ehbc=2E312F" width="640"
-      height="480"></iframe`;
+let currentlat = 51.511980258090276;
+let currentlng = -0.08828733953354373;
+
+const reCentreMap = (currentlat, currentlng) => {
+  const cityMap = document.getElementById("map2");
+  cityMap.innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=1uDTupDbexb25b7sKfx7vTbMh1EV4toQ&ll=${currentlat}%2C${currentlng}}&z=13hl=en&ehbc=2E312F" height="480"></iframe`;
+  console.log(currentlat, currentlng);
+};
+
+reCentreMap(currentlat, currentlng);
+
+// cityMap.innerHTML = ` <iframe
+//       src="https://www.google.com/maps/d/embed?mid=1uDTupDbexb25b7sKfx7vTbMh1EV4toQ&ll=2.511980258090276%2C-0.08828733953354373&z=16hl=en&ehbc=2E312F"
+//       width="640" height="480"></iframe>`;
 
 function geoFindMe() {
   const status = document.querySelector("#status");
-  const mapLink = document.querySelector("#map-link");
-
-  mapLink.href = "";
-  mapLink.textContent = "";
 
   function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
+    // const latitude = position.coords.latitude;
+    // const longitude = position.coords.longitude;
+    let currentlat = position.coords.latitude;
+    let currentlng = position.coords.longitude;
+    reCentreMap(currentlat, currentlng);
 
     status.textContent = "";
-    mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-    mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+    console.log(`Latitude: ${latitude} °, Longitude: ${longitude} °`);
   }
 
   function error() {
