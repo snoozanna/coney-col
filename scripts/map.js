@@ -8,7 +8,7 @@ let map, infoWindow;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 51.513743, lng: -0.0958325 },
-    zoom: 16,
+    zoom: 13,
   });
 
   const icons = {
@@ -67,6 +67,25 @@ function initMap() {
         "</div>",
     },
     {
+      position: new google.maps.LatLng(51.51335645826938, -0.08959207632630892),
+      type: "adventure",
+      content:
+        '<div id="content">' +
+        "<h3>Adventure 2</h3>" +
+        "<p>Infomation about this adventure</p>" +
+        `<a href="https://www.youhavefoundconey.net/" target="_blank"><strong>Link to another website</strong></a>` +
+        "</div>",
+    },
+    {
+      position: new google.maps.LatLng(51.51984594260593, -0.10259542547264745),
+      type: "adventure",
+      content:
+        '<div id="content">' +
+        "<h3>Adventure 3</h3>" +
+        "<p>Infomation about this adventure</p>" +
+        "</div>",
+    },
+    {
       position: new google.maps.LatLng(51.51647019724397, -0.09342378488567582),
       type: "hunt",
       content:
@@ -77,35 +96,68 @@ function initMap() {
     },
   ];
 
-  locations.map((location) => {
-    const marker = new google.maps.Marker({
-      position: location.position,
-      icon: icons[location.type].icon,
-      map: map,
-    });
-    const placewindow = new google.maps.InfoWindow({
-      content: location.content,
-    });
-    marker.addListener("click", () => {
-      placewindow.open({
-        anchor: marker,
-        map,
-        shouldFocus: false,
+  // TODO change it to follow this logic https://developers.google.com/maps/documentation/javascript/examples/marker-remove
+
+  const clearMarkers = () => {};
+
+  const showAllMarkers = () => {
+    locations.map((location) => {
+      const marker = new google.maps.Marker({
+        position: location.position,
+        icon: icons[location.type].icon,
+        map: map,
+      });
+      const placewindow = new google.maps.InfoWindow({
+        content: location.content,
+      });
+      marker.addListener("click", () => {
+        placewindow.open({
+          anchor: marker,
+          map,
+          shouldFocus: false,
+        });
       });
     });
+  };
+
+  const showAdventures = () => {
+    const adventures = [];
+    locations.map((location) => {
+      if (location.type === "adventure") adventures.push(location);
+    });
+    adventures.map((location) => {
+      const marker = new google.maps.Marker({
+        position: location.position,
+        icon: icons[location.type].icon,
+        map: map,
+      });
+      const placewindow = new google.maps.InfoWindow({
+        content: location.content,
+      });
+      marker.addListener("click", () => {
+        placewindow.open({
+          anchor: marker,
+          map,
+          shouldFocus: false,
+        });
+      });
+    });
+  };
+
+  // Reveal location buttons
+  const adventureBtn = document.getElementById("adventureBtn");
+  adventureBtn.addEventListener("click", () => {
+    showAdventures();
+  });
+  const everythingBtn = document.getElementById("everythingBtn");
+  everythingBtn.addEventListener("click", () => {
+    showAllMarkers();
   });
 
-  const contentString =
-    '<div id="content">' + '<div id="siteNotice">' + "<h3>Fair</h3>";
-  "<p>Infomation about this fair</p>" + "</div>" + "</div>";
-
-  // const placeMarker = new google.maps.Marker({
-  //   position: map.getCenter(),
-  //   icon: svgMarker,
-  //   map: map,
-  // });
+  // Functionality for showing your own location
 
   infoWindow = new google.maps.InfoWindow();
+
   const locationButton = document.createElement("button");
   locationButton.textContent = "Show my Current Location";
   locationButton.classList.add("custom-map-control-button");
@@ -120,6 +172,27 @@ function initMap() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
+          const userMarker = new google.maps.Marker({
+            icon: {
+              path: google.maps.SymbolPath.CIRCLE,
+              fillColor: "purple",
+              fillOpacity: 0.6,
+              strokeWeight: 0,
+              rotation: 0,
+              scale: 8,
+            },
+            position: pos,
+            map: map,
+          });
+          userMarker.setPosition(pos);
+          userMarker.addListener("click", () => {
+            placewindow.open({
+              anchor: marker,
+              map,
+              shouldFocus: false,
+            });
+          });
+
           infoWindow.setPosition(pos);
           infoWindow.setContent("You are here.");
           infoWindow.open(map);

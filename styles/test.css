@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,200;0,300;0,600;0,700;1,200&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 20px;
+  background-color: mediumslateblue;
+  padding: 20px;
+  font-family: "IBM Plex Mono", monospace;
+  color: #fff;
+  text-align: center;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown {
+  display: contents;
+}
+
+.dropdown-toggle {
+  background-color: transparent;
+  border: transparent;
+  max-width: 20%;
+}
+
+.dropdown > .btn.show,
+.dropdown > .btn.focus {
+  background-color: transparent;
+  max-width: 20%;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+main {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+button.enter {
+  padding: 10px;
+  font-weight: 600;
+  background-color: hotpink;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 4px;
+}
+
+img.key {
+  max-width: 50%;
+}
+
+section.questions > h2 {
+  font-weight: 600;
+  font-size: x-large;
+  margin-bottom: 40px;
+}
