@@ -185,19 +185,18 @@ function initMap() {
     });
   };
 
-  // Reveal location buttons
+  // Reveal location buttons and toggle
   //TODO FIX
-  
   const adventureBtn = document.getElementById("adventureBtn");
+  console.log(adventureBtn);
   adventureBtn.addEventListener("click", () => {
     console.log(adventureBtn);
-    const toggle = adventureBtn.getAttribute("aria-pressed");
-    console.log("toggle", toggle);
-    if (adventureBtn.getAttribute("aria-pressed") === false) {
+    if (adventureBtn.getAttribute("aria-pressed") === "false") {
+      clearMarkers();
       showAdventures();
       showActiveMarkers();
       adventureBtn.setAttribute("aria-pressed", true);
-    } else {
+    } else if (adventureBtn.getAttribute("aria-pressed")) {
       clearMarkers();
       showActiveMarkers();
       adventureBtn.setAttribute("aria-pressed", false);
