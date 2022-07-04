@@ -16,13 +16,13 @@
 </head>
 
 <!-- our styles -->
-<link rel="stylesheet" href="/styles/generics.css">
-<link rel="stylesheet" href="/styles/test.css">
-<link rel="stylesheet" href="/styles/map.css">
+<link rel="stylesheet" href="/test/styles/generics.css">
+<link rel="stylesheet" href="/test/styles/test.css">
+<link rel="stylesheet" href="/test/styles/map.css">
 
 <!-- our scripts -->
-<script src="/scripts/map.js" type="module"></script>
-<title>Info</title>
+<script src="/test/scripts/map.js" type="module"></script>
+<title>Map</title>
 </head>
 
 <body>
@@ -41,17 +41,26 @@
     <h2>Map</h2>
   </header>
   <main>
-    <section class="key-container"></section>
     <section class="map-container">
       <div id="map"></div>
     </section>
-    <section class="controls-container">
-      <button id="adventureBtn">Show the Adventures</button>
-      <button id="everythingBtn">Show Everything</button>
-    </section>
+
   </main>
+
+
   <footer>
-    <a href="/test/info.html">Back</a>
+    <div class="controls-container">
+      <a href="./landing.html">
+        <img src="/assets/img/back-arrow.png" class="icon">
+      </a>
+      <a id="adventureBtn" data-toggle="button" aria-pressed="false"><img src=" /assets/img/keyhole-circle.png"
+          class="icon" `></a>
+      <a id="fairBtn"><img src="/assets/img/fair-icon.png" class="icon"></a>
+      <a id="locateBtn"><img src="/assets/img/locate.png" class="icon"></a>
+    </div>
+    <!-- <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+      Single toggle
+    </button> -->
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

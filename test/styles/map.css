@@ -1,0 +1,35 @@
+body {
+  padding: 0px;
+  color: #000;
+}
+#map {
+  width: 100vw;
+  height: 90vh;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  margin-block-end: 30px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+.controls-container {
+  display: flex;
+  grid-gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  max-height: 7vh;
+}
