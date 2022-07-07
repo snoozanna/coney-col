@@ -1,6 +1,6 @@
-const browserMount = document.getElementById("browserMount");
+// const browserMount = document.getElementById("browserMount");
 
-let browser = navigator.userAgent;
+// let browser = navigator.userAgent;
 
-browserMount.textContent = browser;
-console.log(navigator.userAgent);
+// browserMount.textContent = browser;
+// console.log(navigator.userAgent);

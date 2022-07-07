@@ -30,6 +30,18 @@ footer {
   align-items: center;
 }
 
+.control-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.control-item > span {
+  color: #fff;
+  font-weight: 600;
+}
 .icon {
-  max-height: 7vh;
+  max-height: 6vh;
 }

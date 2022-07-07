@@ -188,9 +188,11 @@ function initMap() {
   // Reveal location buttons and toggle
   //TODO FIX
   const adventureBtn = document.getElementById("adventureBtn");
-  console.log(adventureBtn);
+  console.log("aB before click", adventureBtn);
+
   adventureBtn.addEventListener("click", () => {
-    console.log(adventureBtn);
+    console.log("fB after click", fairBtn);
+    console.log("aB after click", adventureBtn);
     if (adventureBtn.getAttribute("aria-pressed") === "false") {
       clearMarkers();
       showAdventures();
@@ -204,6 +206,7 @@ function initMap() {
   });
 
   const fairBtn = document.getElementById("fairBtn");
+  console.log("fB before click", fairBtn);
   fairBtn.addEventListener("click", () => {
     showFairs();
     showActiveMarkers();
