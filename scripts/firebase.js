@@ -1,56 +1,67 @@
-// // TODO finish firebase integration
-// import { initializeApp } from "firebase/app";
-// import { getFirestore } from "firebase/firestore";
+// TODO finish firebase integration
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-app.js";
 
+import {
+  getFirestore,
+  collection,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore-lite.js";
+
+// TODO ADD .ENV
 // require("dotenv").config();
 
-// import { getCollection } from "./firebase-utils";
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAg0lR1kSjcDYk5BmQNJVo5ywQ5Ln2muUU",
+  authDomain: "col-test-10539.firebaseapp.com",
+  projectId: "col-test-10539",
+  storageBucket: "col-test-10539.appspot.com",
+  messagingSenderId: "963826174778",
+  appId: "1:963826174778:web:e7c07561a5d560af021e03",
+  measurementId: "G-BC72W2G7P9",
+};
 
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-// // Your web app's Firebase configuration
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAg0lR1kSjcDYk5BmQNJVo5ywQ5Ln2muUU",
-//   authDomain: "col-test-10539.firebaseapp.com",
-//   projectId: "col-test-10539",
-//   storageBucket: "col-test-10539.appspot.com",
-//   messagingSenderId: "963826174778",
-//   appId: "1:963826174778:web:e7c07561a5d560af021e03",
-//   measurementId: "G-BC72W2G7P9",
-// };
-// console.log("hi");
+const FBDocToObj = (doc) => ({ ...doc.data(), _id: doc.id });
 
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app);
+// Read
+const getOne = async (id = "", collectionName = "") => {
+  try {
+    return collection(collectionName).get(id);
+  } catch (err) {
+    console.log("Error for getOne: ", err);
+    return Promise.reject(err.message);
+  }
+};
 
-// export default app;
+const getCollection = async (collectionName = "") => {
+  try {
+    const snapshot = await collection(collectionName).get();
+    const docs = snapshot.docs.map((doc) => {
+      // console.log("new id", doc.id);
+      return FBDocToObj(doc);
+    });
+    return docs;
+    // return snapshot.docs;
+  } catch (err) {
+    return Promise.reject(err.message);
+  }
+};
 
-// const messages = await getCollection(messages);
-// console.log("messages", messages);
+async function getMessages(db) {
+  const messageCol = collection(db, "messages");
+  try {
+    const messageSnapshot = await getDocs(messageCol);
+    const messageList = messageSnapshot.docs.map((doc) => {
+      return FBDocToObj(doc);
+    });
+    return messageList;
+  } catch (err) {
+    return Promise.reject(err.message);
+  }
+}
 
-// import firebase from "firebase/app";
-
-console.log("hi");
-// import firebase from "firebase";
-import * as firebase from "firebase/app";
-// // import "firebase/firestore";
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAg0lR1kSjcDYk5BmQNJVo5ywQ5Ln2muUU",
-//   authDomain: "col-test-10539.firebaseapp.com",
-//   projectId: "col-test-10539",
-//   storageBucket: "col-test-10539.appspot.com",
-//   messagingSenderId: "963826174778",
-//   appId: "1:963826174778:web:e7c07561a5d560af021e03",
-//   measurementId: "G-BC72W2G7P9",
-// };
-
-console.log("fb", firebase);
-
-// const app = firebase.initializeApp(firebaseConfig);
-// // const firestore = firebase.firestore();
-// // export { firestore };
-// export default app;
+export { getOne, getCollection, getMessages, app, db };
