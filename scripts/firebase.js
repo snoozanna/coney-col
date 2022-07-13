@@ -5,6 +5,9 @@ import {
   getFirestore,
   collection,
   getDocs,
+  doc,
+  setDoc,
+  onSnapshot,
 } from "https://www.gstatic.com/firebasejs/9.8.4/firebase-firestore-lite.js";
 
 // TODO ADD .ENV
@@ -24,6 +27,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+// FUNCTIONS FOR READING & WRITING
 
 const FBDocToObj = (doc) => ({ ...doc.data(), _id: doc.id });
 
@@ -64,4 +69,38 @@ async function getMessages(db) {
   }
 }
 
-export { getOne, getCollection, getMessages, app, db };
+// TODO fix input to set the doc and change the broadcast message
+const input = document.getElementById("broadcastInput");
+console.log("input", input.value);
+
+const broadcastBtn = document.getElementById("broadcastBtn");
+broadcastBtn.addEventListener("click", () => {
+  setMessage(db, input.value);
+});
+
+async function setMessage(db, text) {
+  try {
+    await setDoc(doc(db, "messages", "broadcast"), {
+      text: text,
+    });
+  } catch (err) {
+    return Promise.reject(err.message);
+  }
+}
+
+// setMessage(db, "raspberry");
+
+// DISPLAY MESSAGES IN REAL TIME
+
+const messageMount = document.getElementById("messageMount");
+
+const snapshot = onSnapshot(doc(db, "messages", "broadcast"), (doc) => {
+  const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
+  console.log(source, "Current data: ", doc.data());
+  const data = doc.data();
+  const msg = data.text;
+  messageMount.innerHTML = msg;
+});
+
+// console.log(unsub);
+export { getOne, getCollection, getMessages, setMessage, app, db, snapshot };

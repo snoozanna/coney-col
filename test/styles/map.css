@@ -4,13 +4,15 @@ body {
 }
 #map {
   width: 100vw;
-  height: 90vh;
+  height: 78vh;
   position: fixed !important;
-  top: 0;
+  top: 12vh;
   left: 0;
   margin-block-end: 30px;
 }
-
+header {
+  padding: 5px;
+}
 footer {
   position: fixed;
   bottom: 0;
@@ -44,4 +46,9 @@ footer {
 }
 .icon {
   max-height: 6vh;
+}
+
+.broadcast {
+  color: #fff;
+  text-align: right;
 }
