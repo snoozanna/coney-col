@@ -1,0 +1,26 @@
+.fair-carousel {
+  width: 100%;
+}
+
+.carousel {
+  height: 80vh;
+}
+
+.carousel-inner {
+  height: 100%;
+  padding: 10px;
+}
+
+.carousel-item {
+  height: 100%;
+}
+
+.carousel-caption {
+  position: initial;
+}
+
+.carousel-caption > h3 {
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
