@@ -15,21 +15,24 @@ map generation test
 :: Story Stylesheet [stylesheet]
 @import url("./styles/generics.css");
 @import url("./styles/styles.css");
-.map{
-	width:50vw;
+
+	.map{
+	width:80vw;
 	height:50vh;
-	border:0
-}
+
 
 .directions-card {
     display: none!important
 }
 
 @media screen and (min-width: 450px) {
-	.map{
-	width:80vw;
-	height:50vh;
 
+}
+
+.map{
+	width:50vw;
+	height:50vh;
+	border:0
 }
 }
 
