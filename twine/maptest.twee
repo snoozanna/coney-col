@@ -25,6 +25,14 @@ map generation test
     display: none!important
 }
 
+@media screen and (min-width: 450px) {
+	.map{
+	width:80vw;
+	height:50vh;
+
+}
+}
+
 
 
 
