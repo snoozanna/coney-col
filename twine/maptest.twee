@@ -19,6 +19,7 @@ map generation test
 	.map{
 	width:80vw;
 	height:50vh;
+		border:0
 
 
 .directions-card {
