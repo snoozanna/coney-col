@@ -16,8 +16,8 @@ map generation test
 @import url("./styles/generics.css");
 @import url("./styles/styles.css");
 .map{
-	width:80vw;
-	height:70vh;
+	width:50vw;
+	height:50vh;
 	border:0
 }
 
