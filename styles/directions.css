@@ -1,0 +1,54 @@
+body {
+  padding: 0px;
+  color: #000;
+}
+#map {
+  width: 100vw;
+  height: 80vh;
+  position: fixed !important;
+  top: 10vh;
+  left: 0;
+  margin-block-end: 30px;
+}
+header {
+  padding: 5px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+.controls-container {
+  display: flex;
+  grid-gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.control-item > span {
+  color: #fff;
+  font-weight: 600;
+}
+.icon {
+  max-height: 4.5vh;
+}
+
+.broadcast {
+  color: #fff;
+  text-align: right;
+}

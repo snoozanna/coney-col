@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- thirdparty styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- our styles -->
+  <link rel="stylesheet" href="/styles/generics.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/directions.css">
+
+  <!-- our scripts -->
+  <script src="/scripts/directions.js" type="module"></script>
+  <title>directions</title>
+</head>
+
+<body>
+  <header>
+    <h1>directions</h1>
+    <nav>
+      <ul>
+        <li><a href="./map.html">map</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+
+
+    <h2>directions</h2>
+    <p>Building map from scatch using Maps JS API</p>
+    <div id="map"></div>
+    <button id="adventureBtn">Show the Adventures</button>
+    <button id="everythingBtn">Show Everything</button>
+
+
+
+
+
+    <!-- <footer>
+      <nav>
+        <ul>
+          <li><a href="./test/landing.html">test site</a></li>
+          <li><a href="./messaging.html">messaging</a></li>
+          <li><a href="./autoplay.html">autoplay</a></li>
+          <li><a href="./howlers.html">howler</a></li>
+          <li><a href="./echoes.html">echoes</a></li>
+          <li><a href="./map.html">map</a></li>
+          <li><a href="./index.html">home</a></li>
+        </ul>
+      </nav>
+    </footer> -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALqUsSyaTycZPpxIkDGMWukm2P7cmLsQs&callback=initMap&v=weekly"
+      defer></script>
+</body>
+
+</html>

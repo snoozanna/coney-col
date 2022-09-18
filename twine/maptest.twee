@@ -1,0 +1,84 @@
+:: StoryTitle
+map generation test
+
+
+:: StoryData
+{
+	"ifid": "E894C240-9CF9-4814-8F66-D4D3D303EB65",
+	"format": "SugarCube",
+	"format-version": "2.36.1",
+	"start": "start",
+	"zoom": 0.6
+}
+
+
+:: Story Stylesheet [stylesheet]
+@import url("./styles/generics.css");
+@import url("./styles/styles.css");
+.map{
+	width:80vw;
+	height:70vh;
+	border:0
+}
+
+.directions-card {
+    display: none!important
+}
+
+
+
+
+:: Story JavaScript [script]
+$('#ui-bar').remove();
+$(document.head).find('#style-ui-bar').remove();
+
+// MAKE MAP FUNCTION
+setup.test = "this is a test"
+setup.generateDirectionsMap = function (latorg, longorg, latdest, longdest){
+const iFrame = document.createElement("iframe")
+iFrame.classList.add("map")
+iFrame.setAttribute("loading", "lazy")
+iFrame.setAttribute("referrerpolicy", "no-referrer-when-downgrade")
+// iFrame.setAttribute("allowfullscreen")
+iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/directions?key=AIzaSyALqUsSyaTycZPpxIkDGMWukm2P7cmLsQs&center=${latorg},${longorg}&zoom=17&origin=${latorg},${longorg}
+  &destination=${latdest},${longdest}&mode=walking`)
+const mount = document.getElementById("mapMount")
+console.log(iFrame)
+return iFrame
+// this.mapMount.appendChild(iFrame)
+} 
+
+
+:: StoryInit {"position":"10,241","size":"100,100"}
+
+
+:: start [] {"position":"16,93","size":"100,100"}
+<p>Hello</p>
+
+[[Next | 1]]
+
+
+:: 1 
+<p>Hello again</p>
+<p>Lets try to make a map</p>
+[[Next | map]]
+[[back| start]]
+
+:: map
+
+This is a dynamic map which users can move around, and is embedded in the page using an iframe.
+
+We provide it with lat & long for origin and destination. We can provide waypoints too to make a path follow a particular route. 
+
+Annoyingly you can't change the styles too much, so I think the directions card in  the top left, and all of the buildings would need to stay.. Possibly too much going on?
+<<set $myMap = setup.generateDirectionsMap(51.515145100985166,-0.08905860787295125,51.51341581900639, -0.0850674807043743)>>
+$myMap
+
+[[next | end]]
+		[[back| 1]]
+		
+
+:: end
+<p>Thats it</p>
+
+		[[back| map]]
